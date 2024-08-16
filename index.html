@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Header for Author Profile -->
+    <header class="bg-blue-600 text-white p-4 flex items-center justify-between">
+        <div class="flex items-center">
+            <img src="https://via.placeholder.com/50" alt="Profile Image" class="rounded-full mr-4">
+            <div>
+                <h1 class="text-2xl font-bold">Author Dashboard</h1>
+                <p>Welcome back, [Author Name]!</p>
+            </div>
+        </div>
+        <div class="relative">
+            <button id="dropdownBtn" class="bg-blue-500 px-4 py-2 rounded flex items-center">
+                <span class="mr-2">Menu</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div id="dropdownMenu" class="absolute right-0 mt-2 bg-white text-gray-700 rounded shadow-lg hidden">
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Profile</a>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Settings</a>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <div class="flex h-screen">
+        <aside class="w-64 bg-white p-4 border-r border-gray-200">
+            <h2 class="text-xl font-bold mb-2 flex items-center">
+                <i class="fas fa-folder-open text-blue-600 mr-2"></i>Document Management
+            </h2>
+            <p class="sidebar-description">Manage your documents efficiently with tools for creating, editing, and organizing content.</p>
+            <nav id="sidebar" class="space-y-2">
+                <!-- Dynamic document list will be here -->
+            </nav>
+            <button id="addDocBtn" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded flex items-center">
+                <i class="fas fa-plus mr-2"></i>Add Document
+            </button>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 flex p-6 space-x-4">
+            <div id="contentContainer" class="w-2/3 relative">
+                <div id="editorSection" class="hidden">
+                    <h2 class="text-2xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-edit text-yellow-600 mr-2"></i>Edit Document
+                    </h2>
+                    <!-- Input for editing document title -->
+                    <input id="docTitleInput" type="text" class="w-full p-2 mb-4 border border-gray-300 rounded" placeholder="Enter document title...">
+                    <!-- EasyMDE Editor -->
+                    <textarea id="markdownEditor"></textarea>
+                    <button id="saveDocBtn" class="mt-4 px-4 py-2 bg-green-600 text-white rounded flex items-center">
+                        <i class="fas fa-save mr-2"></i>Save Document
+                    </button>
+                </div>
+                <article id="contentSection">
+                    <h1 id="docTitle" class="text-3xl font-bold mb-4">Select a document to view its content</h1>
+                    <div id="contentDisplay" class="prose document-content"></div> <!-- Apply document-content class here -->
+                </article>
+            </div>
+
+            <!-- TOC Sidebar -->
+            <aside id="tocSidebar" class="w-1/3 p-4">
+                <h2 class="text-xl font-bold mb-4 flex items-center">
+                    <i class="fas fa-list-ul text-blue-600 mr-2"></i>Table of Contents
+                </h2>
+                <nav id="toc" class="space-y-2">
+                    <!-- Dynamic TOC will be generated here -->
+                </nav>
+            </aside>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
